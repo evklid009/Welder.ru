@@ -87,133 +87,136 @@ li a:after {
 }
 }
 
-/* contacts-footer */
+/* modal button */
 
-.contact-container * {
-    box-sizing: content-box;
-}    
-.contact-container {
-    position: fixed;
-    left: 0;
-    z-index: 99999999;
-    bottom: 80px;
-    transform: translateX(-10000px);
-    transition: transform 0.4s ease-in-out;
+.css-modal-checkbox-container {
+    height: 60px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 }
-.contact-container.visible {
-    transform: translateX(+10px);
+#css-modal-checkbox {
+    display: none;
 }
-.contact {    
-    background-color: #fff;
-    border-radius: 16px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2), 0 16px 20px rgba(0,0,0,0.2);
-    border: 5px solid #337AB7;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-family: Verdana, sans-serif;  
+.css-modal-checkbox {
+    display: inline-flex;
+    margin: 10px;
+    margin-bottom: 20px;
+    text-decoration: none;
     position: relative;
-    height: 110px;    
-    width: 350px;
-    max-width: calc(100% - 10px);
-}
-.contact span.close-btn {
-    width: 20px;
-    height: 20px;
-    border: 0;
-    cursor: pointer;
-    position: absolute;
-    top: 5px;
-    right: 5px;
-}
-.contact span.close-btn svg {
-    stroke: #337AB7;
-    width: 20px;
-    height: 20px;
-}
-.contact span.close-btn:focus {
-    outline: none;
-}
-.contact div {
-    background-color: #337AB7;
-    border-radius: 0 0 10px 10px;
-    color: #fff;
-    font-size: 13px;
+    font-size: 20px;
+    line-height: 20px;
+    padding: 12px 30px;
+    color: #FFF;
     font-weight: bold;
     text-transform: uppercase;
-    line-height: 18px;
-    padding: 2px 0 6px;
+    font-family: 'Roboto Condensed', Тahoma, sans-serif;
+    background: #337AB7;
+    cursor: pointer;
+    border: 2px solid #BFE2FF;
+    overflow: hidden;
+    z-index: 1;
+    border-radius:20px;    
+}
+.css-modal-checkbox:hover,
+.css-modal-checkbox:active,
+.css-modal-checkbox:focus {
+    color: #FFF;
+}
+.css-modal-checkbox:before {
+    content: '';
     position: absolute;
     top: 0;
-    left: 50%;
-    margin: 0;
-    transform: translateX(-50%);
-    text-align: center;
-    width: 280px;
+    right: -50px;
+    bottom: 0;
+    left: 0;
+    border-right: 50px solid transparent;
+    border-top: 50px solid #2D6B9F;
+    transition: transform 0.5s;
+    transform: translateX(-100%);
+    z-index: -1;
 }
-.contact ul {
-    display: flex;
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
+.css-modal-checkbox:hover:before,
+.css-modal-checkbox:active:before,
+.css-modal-checkbox:focus:before {
+    transform: translateX(0);
 }
-.contact ul li {
-    margin: 24px 6px 0 6px;
+ 
+#css-modal-checkbox + .cmc {
+    display: none;
 }
-.contact ul li a {
-    border: 4px solid #BFE2FF;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 48px;
-    font-size: 24px;
-    color: #337AB7;
-    width: 48px;
-    text-decoration: none;
-    transition: all 0.2s ease-in-out;
-}
-.contact ul li a:hover {
-    border-color: #337AB7;
-    color: #000;
-    box-shadow: 0 9px 12px -9px #337AB7;
-}
-.contact-btn {
-    border-radius: 30px;
-    background-color: #337AB7;
-    border: 2px solid #337AB7;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2), 0 16px 20px rgba(0,0,0,0.2);
-    color: #fff;
-    cursor: pointer;
-    padding: 12px 20px;
+#css-modal-checkbox:checked + .cmc {
+    display:flex;
+    align-items:center;
+    justify-content:center;    
+    z-index: 99999;
     position: fixed;
-    bottom: 20px;
-    left: 20px;
-    z-index: 99999999;
-    font-size: 15px;
-    font-weight: bold;
-    line-height: 20px;
-    font-family: Verdana, sans-serif;      
-    text-transform: uppercase;
-    transition: all 0.4s ease-in-out;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    animation: bg 0.5s ease;
+    background: rgba(51, 122, 183, 0.7);
 }
-.contact-btn:hover {
-    background-color: #ffffff;
-    color: #337AB7;
+ 
+#css-modal-checkbox:checked + .cmc .cmt {
+    font-family: Verdana, sans-serif;  
+    font-size: 16px;
+    padding: 20px;
+    width:80%;
+    max-width: 600px;
+    max-height: 70%;
+    transition: 0.5s;
+    border: 6px solid #BFE2FF;
+    border-radius: 12px;
+    background: #FFF;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2), 0 16px 20px rgba(0,0,0,0.2);
+    text-align: center;
+    overflow: auto;
+    animation: scale 0.5s ease;
 }
-.contact-btn:focus {
-    outline: none;
+.css-modal-close {
+    content: "";
+    width: 50px;
+    height: 50px;
+    border: 6px solid #BFE2FF;
+    border-radius: 12px;
+    position: absolute;
+    z-index: 10;
+    top: 20px;
+    right: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2), 0 16px 20px rgba(0,0,0,0.2);
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23337AB7' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3e%3cline x1='18' y1='6' x2='6' y2='18'%3e%3c/line%3e%3cline x1='6' y1='6' x2='18' y2='18'%3e%3c/line%3e%3c/svg%3e");
+    background-color: #FFF;
+    background-size: cover;
+    animation: move 0.5s ease;
+    cursor: pointer;
 }
-@media screen and (max-width: 480px) {
-    .contact-container.visible {
-        transform: translateX(0px);
+ 
+@keyframes scale {
+    0% {
+        transform: scale(0);
     }
-    .contact-btn {
-        right: 10px;
+    100% {
+        transform: scale(1);
     }
 }
-
+@keyframes move {
+    0% {
+        right: -80px;
+    }
+    100% {
+        right: 20px;
+    }
+}
+@keyframes bg {
+    0% {
+        background: rgba(51, 122, 183, 0);
+    }
+    100% {
+        background: rgba(51, 122, 183, 0.7);
+    }
+}
 
 /* button up */
 
@@ -1826,5 +1829,132 @@ input[type=submit]:hover {
     .column-map, input[type=submit] {
         width: 100%;
         margin-top: 0;
+    }
+}
+
+/* contacts-footer */
+
+.contact-container * {
+    box-sizing: content-box;
+}    
+.contact-container {
+    position: fixed;
+    left: 0;
+    z-index: 99999999;
+    bottom: 80px;
+    transform: translateX(-10000px);
+    transition: transform 0.4s ease-in-out;
+}
+.contact-container.visible {
+    transform: translateX(+10px);
+}
+.contact {    
+    background-color: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2), 0 16px 20px rgba(0,0,0,0.2);
+    border: 5px solid #337AB7;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: Verdana, sans-serif;  
+    position: relative;
+    height: 110px;    
+    width: 350px;
+    max-width: calc(100% - 10px);
+}
+.contact span.close-btn {
+    width: 20px;
+    height: 20px;
+    border: 0;
+    cursor: pointer;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+.contact span.close-btn svg {
+    stroke: #337AB7;
+    width: 20px;
+    height: 20px;
+}
+.contact span.close-btn:focus {
+    outline: none;
+}
+.contact div {
+    background-color: #337AB7;
+    border-radius: 0 0 10px 10px;
+    color: #fff;
+    font-size: 13px;
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: 18px;
+    padding: 2px 0 6px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    margin: 0;
+    transform: translateX(-50%);
+    text-align: center;
+    width: 280px;
+}
+.contact ul {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+.contact ul li {
+    margin: 24px 6px 0 6px;
+}
+.contact ul li a {
+    border: 4px solid #BFE2FF;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 48px;
+    font-size: 24px;
+    color: #337AB7;
+    width: 48px;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+}
+.contact ul li a:hover {
+    border-color: #337AB7;
+    color: #000;
+    box-shadow: 0 9px 12px -9px #337AB7;
+}
+.contact-btn {
+    border-radius: 30px;
+    background-color: #337AB7;
+    border: 2px solid #337AB7;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2), 0 16px 20px rgba(0,0,0,0.2);
+    color: #fff;
+    cursor: pointer;
+    padding: 12px 20px;
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 99999999;
+    font-size: 15px;
+    font-weight: bold;
+    line-height: 20px;
+    font-family: Verdana, sans-serif;      
+    text-transform: uppercase;
+    transition: all 0.4s ease-in-out;
+}
+.contact-btn:hover {
+    background-color: #ffffff;
+    color: #337AB7;
+}
+.contact-btn:focus {
+    outline: none;
+}
+@media screen and (max-width: 480px) {
+    .contact-container.visible {
+        transform: translateX(0px);
+    }
+    .contact-btn {
+        right: 10px;
     }
 }
